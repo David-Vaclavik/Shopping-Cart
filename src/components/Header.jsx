@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { SearchBar } from "./SearchBar";
 
-function Header() {
+function Header({ setSearchedProduct, searchTerm, setSearchTerm, data }) {
   return (
     <header>
       {/* logo will link to HomePage */}
@@ -10,7 +10,12 @@ function Header() {
       </Link>
 
       {/* <h3>Search Bar</h3> */}
-      <SearchBar />
+      <SearchBar
+        setSearchedProduct={setSearchedProduct}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        data={data}
+      />
 
       <div className="controls">
         {/* Use Link instead of <a> for internal routes */}

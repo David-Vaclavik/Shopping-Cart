@@ -20,12 +20,34 @@ header {
   background-color: brown;
 }
 
+header form {
+  display: flex;
+  gap: 10px;
+}
+
 .controls {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* width: 100%; */
+  /* min-height: 100vh; */
+  /* padding: 20px; */
+
+  /* background-color: oklch(90% 0.05 220); */
+}
+
+main h1 {
+  color: oklch(98% 0 0);
+  padding: 10px;
 }
 
 .card-container {

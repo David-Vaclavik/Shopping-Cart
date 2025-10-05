@@ -1,6 +1,7 @@
 import App from "./App";
 //TODO: Create an ErrorPage
 // import ErrorPage from "./ErrorPage";
+import { Home } from "./pages/Home";
 import { Shop } from "./pages/Shop";
 import { Cart } from "./pages/Cart";
 
@@ -9,16 +10,21 @@ import { Cart } from "./pages/Cart";
 const routes = [
   {
     path: "/",
-    element: <App />,
-    // errorElement: <ErrorPage />,
-  },
-  {
-    path: "/shop",
-    element: <Shop />,
-  },
-  {
-    path: "/cart",
-    element: <Cart />,
+    element: <App />, // App is the wrapper with Header
+    children: [
+      {
+        index: true, // Home is the default route
+        element: <Home />,
+      },
+      {
+        path: "shop",
+        element: <Shop />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+    ],
   },
 ];
 
