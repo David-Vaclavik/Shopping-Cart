@@ -7,6 +7,7 @@ function App() {
   const [data, setData] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchedProduct, setSearchedProduct] = useState(null);
+  const [cart, setCart] = useState([]);
 
   const LIMIT = 20;
 
@@ -25,7 +26,7 @@ function App() {
         data={data}
       />
       <main>
-        <Outlet context={{ searchedProduct, data }} />
+        <Outlet context={{ searchedProduct, data, cart, setCart }} />
       </main>
     </>
   );

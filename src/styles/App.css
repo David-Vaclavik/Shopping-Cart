@@ -47,7 +47,7 @@ main {
 
 main h1 {
   color: oklch(98% 0 0);
-  padding: 10px;
+  padding: 20px;
 }
 
 .card-container {
@@ -94,6 +94,28 @@ main h1 {
 
 .card-text {
   padding: 1rem;
+}
+
+.card-controls {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
+  /* width: 100%; */
+  padding: 10px;
+}
+
+.qty-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  input {
+    display: flex;
+    width: 50px;
+    text-align: center;
+  }
 }
 
 /* Responsive breakpoints */

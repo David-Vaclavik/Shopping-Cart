@@ -1,7 +1,10 @@
 import { useOutletContext } from "react-router";
+import { CardControls } from "../components/CardControls";
 
 function Shop() {
-  const { searchedProduct } = useOutletContext();
+  const { searchedProduct, setCart } = useOutletContext();
+
+  console.log("Shop component rendering");
 
   return (
     <>
@@ -16,6 +19,8 @@ function Shop() {
                 <h3>{product.title}</h3>
                 <p>Price: ${product.price}</p>
               </div>
+
+              <CardControls product={product} setCart={setCart} />
             </div>
           ))}
       </div>
