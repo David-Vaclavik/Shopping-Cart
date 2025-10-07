@@ -3,10 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 20px; */
   width: 100%;
+  min-height: 100vh;
 
-  background-color: rgb(42, 67, 68);
+  background-color: var(--bg-dark);
 }
 
 header {
@@ -17,12 +17,22 @@ header {
   width: 100%;
   padding: 20px;
 
-  background-color: brown;
-}
+  background-color: var(--bg);
+  box-shadow: 0px 4px 4px #00000030, 0px 12px 12px #00000015;
 
-header form {
-  display: flex;
-  gap: 10px;
+  a {
+    display: flex;
+  }
+
+  .logo {
+    height: 72px;
+    width: auto;
+  }
+
+  form {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 .controls {
@@ -31,38 +41,37 @@ header form {
   justify-content: center;
   align-items: center;
   gap: 10px;
+
+  a {
+    display: flex;
+  }
+
+  svg {
+    color: var(--primary);
+  }
 }
 
 main {
   display: flex;
+  flex: 1;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
   /* width: 100%; */
   /* min-height: 100vh; */
+  /* min-height: 100%; */
   /* padding: 20px; */
 
   /* background-color: oklch(90% 0.05 220); */
-}
 
-main h1 {
-  color: oklch(98% 0 0);
-  padding: 20px;
-}
-
-.card-container {
-  /* display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 20px; */
+  h1 {
+    /* color: oklch(98% 0 0); */
+    padding: 20px;
+  }
 }
 
 .card-container {
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); */
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 20px;
@@ -76,13 +85,11 @@ main h1 {
   text-align: center;
   text-wrap: balance;
 
-  /* min-width: 250px; */
-  /* max-width: 450px; */
   width: 100%;
-  /* min-height: 415px; */
-  /* padding: 1rem; */
   border-radius: 8px;
-  background-color: gray;
+  /* border: var(--border) solid 1px; */
+  border: var(--border-muted) solid 1px;
+  background-color: var(--bg);
 }
 
 .card img {
@@ -90,6 +97,7 @@ main h1 {
   max-width: 100%;
   height: auto;
   object-fit: contain;
+  padding: 10px;
 }
 
 .card-text {
@@ -118,7 +126,6 @@ main h1 {
   }
 }
 
-/* Responsive breakpoints */
 @media (max-width: 1400px) {
   .card-container {
     grid-template-columns: repeat(3, 1fr);

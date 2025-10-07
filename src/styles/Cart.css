@@ -5,7 +5,8 @@
   padding: 20px;
   margin-top: 20px;
 
-  background-color: oklch(20% 0.05 220);
+  /* background-color: oklch(20% 0.05 220); */
+  background-color: var(--bg);
 }
 
 .cart-items {
@@ -40,7 +41,10 @@
   text-align: center;
 
   padding: 20px;
-  background-color: rgb(32, 46, 88);
+  border-radius: 8px;
+  border: var(--border) solid 1px;
+  /* background-color: rgb(32, 46, 88); */
+  background-color: var(--bg);
 
   hr {
     margin: 10px 0;

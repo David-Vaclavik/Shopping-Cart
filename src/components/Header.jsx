@@ -1,15 +1,15 @@
 import { Link } from "react-router";
 import { SearchBar } from "./SearchBar";
+import logo from "../assets/logo.svg";
+import { ShoppingCart, Store } from "lucide-react";
 
 function Header({ setSearchedProduct, searchTerm, setSearchTerm, data }) {
   return (
     <header>
-      {/* logo will link to HomePage */}
       <Link to="/">
-        <h1>Shop Logo</h1>
+        <img className="logo" src={logo} alt="Shop Logo" />
       </Link>
 
-      {/* <h3>Search Bar</h3> */}
       <SearchBar
         setSearchedProduct={setSearchedProduct}
         searchTerm={searchTerm}
@@ -18,9 +18,14 @@ function Header({ setSearchedProduct, searchTerm, setSearchTerm, data }) {
       />
 
       <div className="controls">
-        {/* Use Link instead of <a> for internal routes */}
-        <Link to="/shop">Shop</Link>
-        <Link to="/cart">Cart</Link>
+        <Link to="/shop">
+          {/* <Store color="#2b457d" size={36} /> */}
+          <Store size={36} />
+        </Link>
+        <Link to="/cart">
+          {/* Cart Icon */}
+          <ShoppingCart size={36} />
+        </Link>
       </div>
     </header>
   );
