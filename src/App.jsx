@@ -15,8 +15,42 @@ function App() {
   const LIMIT = 20;
 
   useEffect(() => {
+    const categories = ["laptops", "smartphones", "mobile-accessories", "tablets"];
+
+    Promise.all(
+      categories.map((cat) =>
+        fetch(
+          `https://dummyjson.com/products/category/${cat}?limit=${LIMIT}&sortBy=title&order=asc`
+        ).then((res) => {
+          if (!res.ok) {
+            throw new Error(`Failed to fetch ${cat}`);
+          }
+          return res.json();
+        })
+      )
+    )
+      .then((results) => {
+        // console.log(results);
+        const allProducts = results
+          .flatMap((r) => r.products)
+          .sort((a, b) => a.title.localeCompare(b.title));
+
+        // console.log(`Loaded ${allProducts.length} products`);
+        setData({ products: allProducts });
+      })
+      .catch((error) => {
+        console.error("Failed to fetch products:", error);
+      });
+  }, []);
+
+  /*
+  useEffect(() => {
     // fetch(`https://dummyjson.com/products`)
-    fetch(`https://dummyjson.com/products?limit=${LIMIT}&sortBy=title&order=asc`)
+    // fetch(`https://dummyjson.com/products?limit=${LIMIT}&sortBy=title&order=asc`)
+
+    fetch(
+      `https://dummyjson.com/products/category/smartphones?limit=${LIMIT}&sortBy=title&order=asc`
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -26,9 +60,11 @@ function App() {
       .then((data) => setData(data))
       .catch((error) => {
         console.error("Failed to fetch products:", error);
-        // Optionally set some fallback data or error state
       });
   }, []);
+  */
+
+  console.log(data);
 
   return (
     <>
