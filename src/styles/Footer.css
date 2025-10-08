@@ -1,0 +1,64 @@
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+
+  /* TODO: maybe tweak the color */
+  color: var(--text-footer);
+  background-color: var(--bg-footer);
+
+  a {
+    font-weight: 400;
+    color: var(--text-footer);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+  }
+
+  h2 {
+    font-weight: 600;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 600px;
+
+    a {
+      text-decoration: underline;
+    }
+
+    .footer-logo {
+      height: 48px;
+      width: auto;
+      filter: brightness(0) invert(92%);
+    }
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    gap: 5px;
+
+    p {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}

@@ -3,6 +3,7 @@ import "./styles/Variables.css";
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [data, setData] = useState(null);
@@ -78,6 +79,7 @@ function App() {
       <main>
         <Outlet context={{ searchedProduct, data, cart, setCart }} />
       </main>
+      <Footer />
     </>
   );
 }

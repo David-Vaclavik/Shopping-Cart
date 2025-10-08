@@ -4,12 +4,6 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  /* margin-top: 20px; */
-  /* background-color: var(--bg); */
-
-  /* h1 {
-    font-family: Orbitron, sans-serif;
-  } */
 
   .hero-text {
     display: flex;
@@ -25,13 +19,13 @@
     }
 
     p {
-      font-family: Inter, sans-serif;
       font-size: 1.25em;
       font-weight: 500;
       color: var(--text-muted);
     }
 
     button {
+      /* TODO: style the button */
       /* color: rebeccapurple; */
     }
   }
@@ -39,6 +33,5 @@
   img {
     max-width: 500px;
     height: auto;
-    /* box-shadow: 0 4px 6px oklch(0% 0 0 / 0.1), 0 2px 4px oklch(0% 0 0 / 0.06); */
   }
 }
