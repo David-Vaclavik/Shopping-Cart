@@ -1,19 +1,17 @@
 import App from "./App";
-//TODO: Create an ErrorPage
-// import ErrorPage from "./ErrorPage";
+import { ErrorPage } from "./pages/ErrorPage";
 import { Home } from "./pages/Home";
 import { Shop } from "./pages/Shop";
 import { Cart } from "./pages/Cart";
 
-// path must match with Link to
-
 const routes = [
   {
     path: "/",
-    element: <App />, // App is the wrapper with Header
+    element: <App />,
+    errorElement: <ErrorPage />, // ← Add this for root-level errors
     children: [
       {
-        index: true, // Home is the default route
+        index: true,
         element: <Home />,
       },
       {
@@ -23,6 +21,10 @@ const routes = [
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "*", // ← Catch-all for 404 errors
+        element: <ErrorPage />,
       },
     ],
   },
