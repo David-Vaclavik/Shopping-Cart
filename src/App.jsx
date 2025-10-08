@@ -64,7 +64,8 @@ function App() {
   }, []);
   */
 
-  console.log(data);
+  // console.log(data);
+  // console.log(data.products[0]);
 
   return (
     <>

@@ -2,17 +2,18 @@ import { useOutletContext } from "react-router";
 import { CardControls } from "../components/CardControls";
 
 function Shop() {
-  const { searchedProduct, setCart } = useOutletContext();
+  const { searchedProduct, data, setCart } = useOutletContext();
 
-  console.log("Shop component rendering");
+  // Show searchedProduct if it exists, otherwise show all products from data
+  const productsToDisplay = searchedProduct || data?.products;
 
   return (
     <>
       <h1>Welcome to the Shop Page</h1>
 
       <div className="card-container">
-        {searchedProduct &&
-          searchedProduct.map((product) => (
+        {productsToDisplay &&
+          productsToDisplay.map((product) => (
             <div className="card" key={product.id}>
               <img src={product.images[0]} alt={product.title} />
               <div className="card-text">

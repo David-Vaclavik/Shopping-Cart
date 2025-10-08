@@ -21,7 +21,7 @@ function CardControls({ product, setCart }) {
     e.preventDefault();
     // Handle form submission
     console.log("Form submitted with quantity:", quantity);
-    // console.log(product);
+    console.log(product);
 
     if (quantity > 0) {
       const quantityToAdd = quantity; // Capture the value
@@ -29,7 +29,8 @@ function CardControls({ product, setCart }) {
       setCart((prevCart) => {
         // Check if product already in cart
         const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
-        console.log("Existing product index:", existingProductIndex);
+        // console.log("Existing product index:", existingProductIndex);
+        // console.log(prevCart);
 
         // If found, update quantity and total
         if (existingProductIndex !== -1) {
