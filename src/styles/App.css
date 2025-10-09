@@ -106,9 +106,7 @@ main {
 
 .card-controls {
   display: flex;
-  /* flex-direction: column; */
   gap: 10px;
-  /* width: 100%; */
   padding: 10px;
 }
 
@@ -121,8 +119,21 @@ main {
 
   input {
     display: flex;
-    width: 50px;
+    width: 40px;
     text-align: center;
+  }
+
+  /* Hide number input spinners in Chrome, Safari, Edge, Opera */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Hide number input spinners in Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
   }
 }
 

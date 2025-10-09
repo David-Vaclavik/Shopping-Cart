@@ -1,20 +1,22 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 function CardControls({ product, setCart }) {
-  const [quantity, setQuantity] = useState(0);
-  const renderCount = useRef(0);
+  const [quantity, setQuantity] = useState(1);
+
+  const INIT_QTY = 1;
 
   // Debug: Track renders
-  useEffect(() => {
-    renderCount.current += 1;
-  });
-
+  // import { useEffect, useRef } from "react";
+  // const renderCount = useRef(0);
+  // useEffect(() => {
+  //   renderCount.current += 1;
+  // });
   // console.log(`CardControls for ${product.title} - Render #${renderCount.current}`);
   // End Debug
 
   const handleChange = (value) => {
-    const numValue = value === "" ? 0 : parseInt(value, 10);
-    setQuantity(Math.max(0, numValue)); // Never go below 0
+    const numValue = value === "" ? INIT_QTY : parseInt(value, 10);
+    setQuantity(Math.max(INIT_QTY, Math.min(999, numValue))); // Between 1 and 999
   };
 
   const handleSubmit = (e) => {
@@ -24,7 +26,7 @@ function CardControls({ product, setCart }) {
     console.log(product);
 
     if (quantity > 0) {
-      const quantityToAdd = quantity; // Capture the value
+      const quantityToAdd = quantity;
 
       setCart((prevCart) => {
         // Check if product already in cart
@@ -55,7 +57,6 @@ function CardControls({ product, setCart }) {
             title: product.title,
             price: product.price,
             image: product.images[0],
-            // quantity: quantity,
             quantity: quantityToAdd,
             total: product.price * quantityToAdd,
           },
@@ -66,7 +67,7 @@ function CardControls({ product, setCart }) {
       });
     }
 
-    setQuantity(0);
+    setQuantity(1);
   };
 
   return (
@@ -78,7 +79,8 @@ function CardControls({ product, setCart }) {
 
         <input
           type="number"
-          min="0"
+          min={INIT_QTY}
+          max={999}
           value={quantity}
           onChange={(e) => handleChange(e.target.value)}
         />

@@ -1,12 +1,13 @@
 import "../styles/Footer.css";
-import logo from "../assets/logo.svg";
+// import logo from "../assets/logo.svg";
+import logo36 from "../assets/logo36.svg";
 import { Mail, Phone, Github, MessageCircle } from "lucide-react";
 
 function Footer() {
   return (
     <footer>
       <div className="footer-container">
-        <img className="footer-logo" src={logo} alt="Shop Logo" />
+        <img className="footer-logo" src={logo36} alt="Shop Logo" />
         {/* <p>&copy; 2023 Your Company. All rights reserved.</p> */}
         <p>
           This is not a real store. This is the front-end of a hypothetical E-commerce app built in
