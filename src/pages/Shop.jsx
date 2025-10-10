@@ -1,11 +1,14 @@
 import { useOutletContext } from "react-router";
 import { CardControls } from "../components/CardControls";
+import "../styles/Shop.css";
 
 function Shop() {
   const { searchedProduct, data, setCart } = useOutletContext();
 
   // Show searchedProduct if it exists, otherwise show all products from data
   const productsToDisplay = searchedProduct || data?.products;
+
+  // TODO: Add filtering options for categories
 
   return (
     <>
@@ -14,6 +17,8 @@ function Shop() {
         Experience innovation with our collection of cutting-edge electronics crafted for modern
         living.
       </p>
+
+      {/* TODO: Add filtering options for categories */}
 
       <div className="card-container">
         {productsToDisplay &&

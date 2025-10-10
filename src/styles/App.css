@@ -14,39 +14,27 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* gap: 10px; */
   width: 100%;
   padding: 10px 20px;
-  /* padding: clamp(5px, 10px, 20px); */
 
   background-color: var(--bg);
   box-shadow: 0px 4px 4px #00000030, 0px 12px 12px #00000015;
 
   a {
     display: flex;
-    /* flex: 1; */
   }
 
   .logo {
-    /* height: 72px; */
-    /* height: 48px; */
-    /* max-width: 150px; */
-    /* width: auto; */
-    height: clamp(48px, 6vw, 72px); /* Fluid between 48px-72px */
-    /* max-width: 200px; */
+    height: clamp(48px, 6vw, 72px);
     width: auto;
     margin-right: 10px;
   }
 
   form {
     display: flex;
-    /* flex: 1; */
-    /* justify-content: flex-start; */
-    /* gap: 10px; */
-    /* margin: 0 10px; */
-    margin-right: 10px;
     width: 100%;
     max-width: 600px;
+    margin-right: 10px;
 
     input {
       width: 100%;
@@ -56,7 +44,6 @@ header {
     }
 
     button {
-      /* padding: 0; */
       border: var(--primary) solid 1px;
       border-radius: 0 8px 8px 0;
     }
@@ -65,9 +52,7 @@ header {
 
 .controls {
   display: flex;
-  /* flex: 1; */
   flex-direction: row;
-  /* justify-content: center; */
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
@@ -95,126 +80,6 @@ main {
   }
 }
 
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  text-wrap: balance;
-
-  width: 100%;
-  border-radius: 8px;
-  /* border: var(--border) solid 1px; */
-  border: var(--border-muted) solid 1px;
-  background-color: var(--bg);
-}
-
-.card img {
-  /* max-width: 300px; */
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  padding: 10px;
-}
-
-.card-text {
-  padding: 0 10px;
-}
-
-.card-controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px;
-}
-
-.card-controls > .qty-controls {
-  font-size: 20px;
-  font-weight: 500;
-
-  button {
-    padding: 0;
-    padding-bottom: 2px;
-  }
-
-  input {
-    padding-top: 2px;
-  }
-}
-
-.qty-controls,
-.add-to-cart {
-  width: 150px;
-  height: 45px;
-}
-
-.add-to-cart {
-  padding: 0;
-  font-size: 20px;
-  white-space: nowrap;
-}
-
-.qty-controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  button {
-    width: 50px;
-  }
-
-  button:first-child {
-    border-radius: 8px 0 0 8px;
-  }
-
-  button:last-child {
-    border-radius: 0 8px 8px 0;
-  }
-
-  input {
-    display: flex;
-    width: 50px;
-    text-align: center;
-    border-radius: 0;
-    border: var(--primary) solid 1px;
-  }
-
-  /* Hide number input spinners in Chrome, Safari, Edge, Opera */
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Hide number input spinners in Firefox */
-  input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-  }
-}
-
-@media (max-width: 1400px) {
-  .card-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 1000px) {
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 750px) {
   header {
     padding: 10px;
@@ -222,11 +87,5 @@ main {
 
   header .logo {
     display: none;
-  }
-}
-
-@media (max-width: 500px) {
-  .card-container {
-    grid-template-columns: 1fr;
   }
 }
