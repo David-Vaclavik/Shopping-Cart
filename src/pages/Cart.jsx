@@ -65,8 +65,8 @@ function Cart() {
                       </button>
                     </div>
 
-                    <p>Quantity: {item.quantity}</p>
-                    <p>Total: ${item.total.toFixed(2)}</p>
+                    {/* <p>Quantity: {item.quantity}</p> */}
+                    <h4>Total: ${item.total.toFixed(2)}</h4>
                   </div>
                 </div>
               </div>

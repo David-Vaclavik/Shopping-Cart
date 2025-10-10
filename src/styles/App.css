@@ -101,26 +101,78 @@ main {
 }
 
 .card-text {
-  padding: 1rem;
+  padding: 0 10px;
 }
 
+/* TODO: update styles for cart controls */
 .card-controls {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: center; */
   gap: 10px;
-  padding: 10px;
+  padding: 20px;
+
+  /* background-color: brown; */
+}
+
+.card-controls > .qty-controls {
+  font-size: 20px;
+  font-weight: 500;
+
+  button {
+    padding: 0;
+    /* padding-bottom: 4px; */
+  }
+
+  input {
+    padding-top: 2px;
+  }
+}
+
+.qty-controls,
+.add-to-cart {
+  /* flex: 1 1 150px; */
+  /* flex: 1; */
+  /* min-width: 150px; */
+  width: 150px;
+  height: 45px;
+}
+
+.add-to-cart {
+  padding: 0;
+  font-size: 20px;
+  /* font-weight: 600; */
+  white-space: nowrap;
 }
 
 .qty-controls {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  gap: 10px;
+  /* align-items: center; */
+  /* gap: 10px; */
+
+  button {
+    width: 50px;
+  }
+
+  button:first-child {
+    border-radius: 8px 0 0 8px;
+  }
+
+  button:last-child {
+    border-radius: 0 8px 8px 0;
+  }
 
   input {
     display: flex;
-    width: 40px;
+    width: 50px;
+    /* height: 42px; */
     text-align: center;
+    border-radius: 0;
+    /* border-inline: none; */
+    border: var(--primary) solid 1px;
   }
 
   /* Hide number input spinners in Chrome, Safari, Edge, Opera */

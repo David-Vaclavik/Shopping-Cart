@@ -51,6 +51,24 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+
+      .qty-controls {
+        width: 120px;
+        height: 28px;
+        /* background-color: brown; */
+
+        button {
+          padding: 0;
+          padding-bottom: 1px;
+        }
+
+        button,
+        input {
+          width: 40px;
+        }
+      }
     }
   }
 }
