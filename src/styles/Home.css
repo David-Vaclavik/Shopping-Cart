@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   padding: 20px;
 
   .hero-text {
@@ -31,7 +32,29 @@
   }
 
   img {
-    max-width: 500px;
+    /* flex: 1; */
+    /* max-width: 500px; */
+    width: 100%;
+    max-width: 40%;
     height: auto;
+    max-height: 500px;
+    /* min-height: 350px; */
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 750px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+
+    img {
+      max-width: 60%;
+      margin-top: 10px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.25em;
+    }
   }
 }

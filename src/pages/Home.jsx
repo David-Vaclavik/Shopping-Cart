@@ -1,4 +1,5 @@
-import hero from "../assets/hero-phone.webp";
+// import hero from "../assets/hero-phone.webp";
+import heroSketch from "../assets/hero-sketch.png";
 import "../styles/Home.css";
 import { Link } from "react-router";
 
@@ -12,7 +13,7 @@ function Home() {
           <button>Shop Now</button>
         </Link>
       </div>
-      <img src={hero} alt="Hero" />
+      <img src={heroSketch} alt="Hero" />
     </div>
   );
 }

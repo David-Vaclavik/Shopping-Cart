@@ -36,7 +36,9 @@ function Cart() {
   return (
     <>
       <h1>Cart</h1>
-      <p>You can choose your payment and delivery preferences at checkout</p>
+      <p className="main-description">
+        You can choose your payment and delivery preferences at checkout
+      </p>
 
       <div className="cart-container">
         {cart.length > 0 ? (
@@ -48,7 +50,7 @@ function Cart() {
                   <h3>{item.title}</h3>
                   <p>Price: ${item.price.toFixed(2)}</p>
                   <div className="cart-item-total">
-                    {/* TODO: add quantity selector here, shares same class as in Shop */}
+                    {/* quantity selector here, shares same class as in Shop */}
                     <div className="qty-controls">
                       <button type="button" onClick={() => handleChange(item, item.quantity - 1)}>
                         -
