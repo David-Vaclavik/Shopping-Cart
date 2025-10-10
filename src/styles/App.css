@@ -10,6 +10,10 @@
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Ensures header stays above other content */
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -77,6 +81,7 @@ main {
   h1 {
     padding: 20px;
     padding-bottom: 10px;
+    text-align: center;
   }
 }
 
