@@ -9,7 +9,11 @@ function Shop() {
 
   return (
     <>
-      <h1>Welcome to the Shop Page</h1>
+      <h1>Our Collection</h1>
+      <p className="main-description">
+        Experience innovation with our collection of cutting-edge electronics crafted for modern
+        living.
+      </p>
 
       <div className="card-container">
         {productsToDisplay &&

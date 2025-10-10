@@ -88,15 +88,10 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* min-height: 100vh; */
-  /* min-height: 100%; */
-  /* padding: 20px; */
-
-  /* background-color: oklch(90% 0.05 220); */
 
   h1 {
-    /* color: oklch(98% 0 0); */
     padding: 20px;
+    padding-bottom: 10px;
   }
 }
 
@@ -105,6 +100,7 @@ main {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 20px;
+  margin-top: 20px;
 }
 
 .card {
@@ -134,16 +130,12 @@ main {
   padding: 0 10px;
 }
 
-/* TODO: update styles for cart controls */
 .card-controls {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* align-items: center; */
   gap: 10px;
   padding: 20px;
-
-  /* background-color: brown; */
 }
 
 .card-controls > .qty-controls {
@@ -162,9 +154,6 @@ main {
 
 .qty-controls,
 .add-to-cart {
-  /* flex: 1 1 150px; */
-  /* flex: 1; */
-  /* min-width: 150px; */
   width: 150px;
   height: 45px;
 }
@@ -172,7 +161,6 @@ main {
 .add-to-cart {
   padding: 0;
   font-size: 20px;
-  /* font-weight: 600; */
   white-space: nowrap;
 }
 
@@ -180,8 +168,6 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* align-items: center; */
-  /* gap: 10px; */
 
   button {
     width: 50px;
@@ -198,10 +184,8 @@ main {
   input {
     display: flex;
     width: 50px;
-    /* height: 42px; */
     text-align: center;
     border-radius: 0;
-    /* border-inline: none; */
     border: var(--primary) solid 1px;
   }
 
@@ -237,7 +221,7 @@ main {
   }
 
   header .logo {
-    display: none; /* Hides the logo on screens ≤ 750px */
+    display: none;
   }
 }
 

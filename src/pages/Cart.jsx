@@ -3,15 +3,12 @@ import "../styles/Cart.css";
 
 function Cart() {
   const { cart, setCart } = useOutletContext();
-  console.log("Cart component rendering with items:", cart);
+  // console.log("Cart component rendering with items:", cart);
 
   const totalAmount = cart?.reduce((acc, item) => acc + item.total, 0) || 0;
 
   const handleChange = (item, newQty) => {
-    // const numValue = newQty === "" ? 1 : parseInt(newQty, 10);
     const validQty = Math.max(0, Math.min(999, newQty));
-
-    console.log("Change quantity to:", validQty);
 
     setCart((prevCart) => {
       // Remove item if quantity < 1
@@ -26,7 +23,6 @@ function Cart() {
               ...cartItem,
               quantity: validQty,
               total: validQty * cartItem.price,
-              // total: Number((validQty * cartItem.price).toFixed(2)),
             }
           : cartItem
       );
@@ -57,7 +53,6 @@ function Cart() {
                       </button>
                       <input
                         type="number"
-                        // min={INIT_QTY}
                         max={999}
                         value={item.quantity}
                         onChange={(e) => handleChange(item, e.target.value)}
@@ -67,7 +62,6 @@ function Cart() {
                       </button>
                     </div>
 
-                    {/* <p>Quantity: {item.quantity}</p> */}
                     <h4>Total: ${item.total.toFixed(2)}</h4>
                   </div>
                 </div>
@@ -92,7 +86,7 @@ function Cart() {
             <h3>Total</h3>
             <h3>{totalAmount.toFixed(2)}</h3>
           </div>
-          <button>Checkout</button>
+          <button onClick={() => alert("Live demo ends here")}>Checkout</button>
         </div>
       </div>
     </>

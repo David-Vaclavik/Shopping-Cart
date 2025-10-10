@@ -46,7 +46,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* min-width: 320px; */
   min-height: 100vh;
 }
 
@@ -55,6 +54,7 @@ h1 {
   line-height: 1.1;
 }
 
+/* TODO: update button styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;

@@ -5,15 +5,6 @@ function CardControls({ product, setCart }) {
 
   const INIT_QTY = 1;
 
-  // Debug: Track renders
-  // import { useEffect, useRef } from "react";
-  // const renderCount = useRef(0);
-  // useEffect(() => {
-  //   renderCount.current += 1;
-  // });
-  // console.log(`CardControls for ${product.title} - Render #${renderCount.current}`);
-  // End Debug
-
   const handleChange = (value) => {
     const numValue = value === "" ? INIT_QTY : parseInt(value, 10);
     setQuantity(Math.max(INIT_QTY, Math.min(999, numValue))); // Between 1 and 999
@@ -21,9 +12,8 @@ function CardControls({ product, setCart }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted with quantity:", quantity);
-    console.log(product);
+    // console.log("Form submitted with quantity:", quantity);
+    // console.log(product);
 
     if (quantity > 0) {
       const quantityToAdd = quantity;
@@ -31,8 +21,6 @@ function CardControls({ product, setCart }) {
       setCart((prevCart) => {
         // Check if product already in cart
         const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
-        // console.log("Existing product index:", existingProductIndex);
-        // console.log(prevCart);
 
         // If found, update quantity and total
         if (existingProductIndex !== -1) {
@@ -45,7 +33,7 @@ function CardControls({ product, setCart }) {
             total: (currentQty + quantityToAdd) * product.price,
           };
 
-          console.log("Updated cart:", updatedCart);
+          // console.log("Updated cart:", updatedCart);
           return updatedCart;
         }
 
@@ -62,7 +50,7 @@ function CardControls({ product, setCart }) {
           },
         ];
 
-        console.log("New cart:", newCart);
+        // console.log("New cart:", newCart);
         return newCart;
       });
     }
@@ -76,7 +64,6 @@ function CardControls({ product, setCart }) {
         <button type="button" onClick={() => handleChange(quantity - 1)}>
           -
         </button>
-
         <input
           type="number"
           min={INIT_QTY}
@@ -84,7 +71,6 @@ function CardControls({ product, setCart }) {
           value={quantity}
           onChange={(e) => handleChange(e.target.value)}
         />
-
         <button type="button" onClick={() => handleChange(quantity + 1)}>
           +
         </button>

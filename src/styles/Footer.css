@@ -6,7 +6,6 @@ footer {
   padding: 20px;
   gap: 10px;
 
-  /* TODO: maybe tweak the color */
   color: var(--text-footer);
   background-color: var(--bg-footer);
 
@@ -29,11 +28,8 @@ footer {
     display: flex;
     flex: 2;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: flex-start;
     gap: 10px;
-    /* max-width: 600px; */
-    /* margin-right: 10px; */
 
     a {
       text-decoration: underline;
@@ -50,8 +46,6 @@ footer {
     display: flex;
     flex: 1;
     flex-direction: column;
-    /* justify-content: flex-end; */
-    /* align-items: center; */
     gap: 5px;
   }
 
@@ -59,8 +53,6 @@ footer {
     display: flex;
     flex: 1;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
     gap: 5px;
 
     p {
