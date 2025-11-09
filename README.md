@@ -6,8 +6,6 @@ A modern, responsive e-commerce shopping cart application built with React and V
 
 [View Live Demo](https://digitronix-store.vercel.app/)
 
-test
-
 ## ✨ Features
 
 - **Product Browsing**: Browse products from multiple categories (laptops, smartphones, tablets, accessories)
