@@ -4,7 +4,7 @@ A modern, responsive e-commerce shopping cart application built with React and V
 
 ## 🚀 Live Demo
 
-[View Live Demo](#) <!-- Add your deployment link here -->
+[View Live Demo](https://digitronix-store.vercel.app/)
 
 test
 
