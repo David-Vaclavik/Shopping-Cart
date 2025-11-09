@@ -6,6 +6,8 @@ A modern, responsive e-commerce shopping cart application built with React and V
 
 [View Live Demo](#) <!-- Add your deployment link here -->
 
+test
+
 ## ✨ Features
 
 - **Product Browsing**: Browse products from multiple categories (laptops, smartphones, tablets, accessories)
