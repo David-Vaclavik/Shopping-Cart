@@ -24,8 +24,12 @@ function Footer() {
 
       <div className="footer-links">
         <h2>Useful Links</h2>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Service</a>
+        <a href="/privacy" onClick={(e) => e.preventDefault()}>
+          Privacy Policy
+        </a>
+        <a href="/terms" onClick={(e) => e.preventDefault()}>
+          Terms of Service
+        </a>
         <a href="https://logoipsum.com/" target="_blank" rel="noopener noreferrer">
           Logoipsum
         </a>
