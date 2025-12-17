@@ -20,7 +20,6 @@ A modern, responsive e-commerce shopping cart application built with React and V
 - **React 19** - UI library
 - **React Router** - Client-side routing
 - **Vite** - Build tool and dev server
-- **CSS** - Styling with CSS custom properties
 - **Lucide React** - Icon library
 - **DummyJSON API** - Product data source
 
