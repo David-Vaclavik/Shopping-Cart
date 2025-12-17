@@ -1,5 +1,5 @@
 // import hero from "../assets/hero-phone.webp";
-import heroSketch from "../assets/hero-sketch.png";
+import heroSketch from "../assets/hero-sketch.webp";
 import "../styles/Home.css";
 import { Link } from "react-router";
 
