@@ -1,14 +1,17 @@
 import { useOutletContext } from "react-router";
 import "../styles/Cart.css";
+import type { CartItem, OutletContext } from "../types";
 
 function Cart() {
-  const { cart, setCart } = useOutletContext();
+  const { cart, setCart } = useOutletContext<OutletContext>();
   // console.log("Cart component rendering with items:", cart);
 
   const totalAmount = cart?.reduce((acc, item) => acc + item.total, 0) || 0;
 
-  const handleChange = (item, newQty) => {
-    const validQty = Math.max(0, Math.min(999, newQty));
+  const handleChange = (item: CartItem, newQty: string | number) => {
+    const numQty = typeof newQty === "number" ? newQty : parseInt(newQty, 10);
+    const validQty = Math.max(0, Math.min(999, numQty));
+    // console.log(cart);
 
     setCart((prevCart) => {
       // Remove item if quantity < 1
@@ -29,6 +32,7 @@ function Cart() {
     });
   };
 
+  //! This whole component needs to be purged... into smaller components
   return (
     <>
       <h1>Cart</h1>

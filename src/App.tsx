@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import type { Data, Product } from "./types";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<Data | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchedProduct, setSearchedProduct] = useState(null);
+  const [searchedProduct, setSearchedProduct] = useState<Product[] | null>(null);
   const [cart, setCart] = useState([]);
   const location = useLocation();
 
@@ -24,12 +25,12 @@ function App() {
     const categories = ["laptops", "smartphones", "mobile-accessories", "tablets"];
 
     Promise.all(
-      categories.map((cat) =>
+      categories.map((category) =>
         fetch(
-          `https://dummyjson.com/products/category/${cat}?limit=${LIMIT}&sortBy=title&order=asc`
+          `https://dummyjson.com/products/category/${category}?limit=${LIMIT}&sortBy=title&order=asc`
         ).then((res) => {
           if (!res.ok) {
-            throw new Error(`Failed to fetch ${cat}`);
+            throw new Error(`Failed to fetch ${category}`);
           }
           return res.json();
         })
@@ -42,6 +43,7 @@ function App() {
           .sort((a, b) => a.title.localeCompare(b.title));
 
         // console.log(`Loaded ${allProducts.length} products`);
+        // console.log(allProducts);
         setData({ products: allProducts });
       })
       .catch((error) => {

@@ -1,161 +1,73 @@
-# Shopping Cart - React E-commerce Frontend
+# React + TypeScript + Vite
 
-A modern, responsive e-commerce shopping cart application built with React and Vite. This project demonstrates frontend development skills including routing, state management, and API integration.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🚀 Live Demo
+Currently, two official plugins are available:
 
-[View Live Demo](https://digitronix-store.vercel.app/)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## ✨ Features
+## React Compiler
 
-- **Product Browsing**: Browse products from multiple categories (laptops, smartphones, tablets, accessories)
-- **Search Functionality**: Real-time product search with instant results
-- **Shopping Cart**: Add, remove, and update product quantities
-- **Responsive Design**: Fully responsive layout that works on desktop, tablet, and mobile devices
-- **Sticky Navigation**: Header stays visible while scrolling for easy navigation
-- **Modern UI**: Clean interface with smooth animations and user-friendly controls
+The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
 
-## 🛠️ Technologies Used
+## Expanding the ESLint configuration
 
-- **React 19** - UI library
-- **React Router** - Client-side routing
-- **Vite** - Build tool and dev server
-- **Lucide React** - Icon library
-- **DummyJSON API** - Product data source
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## 📦 Installation
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-1. Clone the repository:
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-   ```bash
-   git clone https://github.com/David-Vaclavik/Shopping-Cart.git
-   cd Shopping-Cart
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and navigate to `http://localhost:5173`
-
-## 🏗️ Project Structure
-
-```
-Shopping-Cart/
-├── public/              # Static assets
-│   ├── logo-digi.svg
-│   └── vite.svg
-├── src/
-│   ├── assets/          # Images and SVGs
-│   ├── components/      # Reusable React components
-│   │   ├── CardControls.jsx
-│   │   ├── Footer.jsx
-│   │   ├── Header.jsx
-│   │   └── SearchBar.jsx
-│   ├── pages/           # Page components
-│   │   ├── Cart.jsx
-│   │   ├── ErrorPage.jsx
-│   │   ├── Home.jsx
-│   │   └── Shop.jsx
-│   ├── styles/          # CSS modules
-│   │   ├── App.css
-│   │   ├── Cart.css
-│   │   ├── ErrorPage.css
-│   │   ├── Footer.css
-│   │   ├── Home.css
-│   │   ├── Shop.css
-│   │   └── Variables.css
-│   ├── App.jsx          # Main app component
-│   ├── main.jsx         # Entry point
-│   └── routes.jsx       # Route configuration
-├── index.html
-├── package.json
-└── vite.config.js
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## 🎯 Key Features Explained
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-### Product Management
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-- Fetches products from multiple categories via DummyJSON API
-- Combines and sorts products alphabetically
-- Displays products in a responsive grid layout
-
-### Shopping Cart
-
-- Add products with quantity controls
-- Increment/decrement quantities with pill-shaped button groups
-- Remove items by setting quantity to 0
-- Real-time total calculation
-- Persistent cart state across pages
-
-### Search
-
-- Real-time search filtering
-- Searches across product titles
-- Shows all products when search is empty
-
-### Responsive Design
-
-- Sticky header for better navigation
-- Flexible layouts that adapt to screen size
-
-## 🎨 Styling
-
-The project uses CSS custom properties (CSS variables) for consistent theming:
-
-```css
-:root {
-  --primary: oklch(0.4 0.1 264);
-  --bg: oklch(0.96 0 264);
-  --text: oklch(0.15 0 264);
-  --text-muted: oklch(0.4 0 264);
-  --border: oklch(0.6 0 264);
-  --border-muted: oklch(0.7 0 264);
-  /* ... more variables */
-}
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-## 📱 Responsive Breakpoints
-
-- **Desktop**: > 750px - Full layout with all features
-- **Tablet**: 500px - 750px - Adjusted spacing and smaller logo
-- **Mobile**: < 500px - Stacked layout, hidden logo, single column grid
-
-## 🚧 Future Enhancements
-
-- [ ] Add product filtering by category
-  <!-- - [ ] Implement user authentication -->
-  <!-- - [ ] Add dark mode support -->
-    <!-- - [ ] Add favorites/wishlist functionality -->
-    <!-- - [ ] Add product reviews and ratings -->
-    <!-- - [ ] Implement order history -->
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 👤 Author
-
-**David Václavík**
-
-- GitHub: [@David-Vaclavik](https://github.com/David-Vaclavik)
-
-## 🙏 Acknowledgments
-
-- Product data provided by [DummyJSON](https://dummyjson.com/)
-- Logo placeholder from [Logoipsum](https://logoipsum.com/)
-- Icons from [Lucide React](https://lucide.dev/)
-- Fonts: Inter and Orbitron from [Google Fonts](https://fonts.google.com/)
-
----
-
-**Note**: This is a demonstration project for educational purposes. It is not a real e-commerce store and does not process actual payments.

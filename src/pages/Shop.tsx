@@ -1,9 +1,10 @@
 import { useOutletContext } from "react-router";
 import { CardControls } from "../components/CardControls";
 import "../styles/Shop.css";
+import type { OutletContext } from "../types";
 
 function Shop() {
-  const { searchedProduct, data, setCart } = useOutletContext();
+  const { searchedProduct, data, setCart } = useOutletContext<OutletContext>();
 
   // Show searchedProduct if it exists, otherwise show all products from data
   const productsToDisplay = searchedProduct || data?.products;

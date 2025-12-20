@@ -3,8 +3,9 @@ import { SearchBar } from "./SearchBar";
 // import logo from "../assets/logo.svg";
 import logo36 from "../assets/logo36.svg";
 import { ShoppingCart, Store } from "lucide-react";
+import type { SearchBarProps } from "../types";
 
-function Header({ setSearchedProduct, searchTerm, setSearchTerm, data }) {
+function Header({ setSearchedProduct, searchTerm, setSearchTerm, data }: SearchBarProps) {
   return (
     <header>
       <Link to="/">

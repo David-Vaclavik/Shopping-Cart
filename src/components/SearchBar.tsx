@@ -1,7 +1,9 @@
 // import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import type { SearchBarProps } from "../types";
 
-function SearchBar({ setSearchedProduct, searchTerm, setSearchTerm, data }) {
+function SearchBar({ setSearchedProduct, searchTerm, setSearchTerm, data }: SearchBarProps) {
+  //TODO: searchTerm state why is it lifted? investigate later
   // const [searchTerm, setSearchTerm] = useState("");
   // console.log(data);
   const navigate = useNavigate();
@@ -15,15 +17,18 @@ function SearchBar({ setSearchedProduct, searchTerm, setSearchTerm, data }) {
   // Limit suggestions to first 5 matches
   const filteredProductsLimited = filteredProducts.slice(0, 5);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Searching for:", searchTerm);
 
+    console.log(filteredProducts);
     setSearchedProduct(filteredProducts);
+
     // Clears input and state
-    setSearchTerm("");
+    // setSearchTerm(""); //? Should we clear the search term?
 
     // Navigate to shop page
+    //TODO: if in shop page already, don't navigate again
     navigate("/shop");
   };
 
