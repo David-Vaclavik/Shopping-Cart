@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import type { SearchBarProps } from "../types";
 
 function SearchBar({ setSearchedProduct, searchTerm, setSearchTerm, data }: SearchBarProps) {
-  //TODO: searchTerm state why is it lifted? investigate later
+  //TODO: searchTerm state why is it lifted? investigate later.
   // const [searchTerm, setSearchTerm] = useState("");
   // console.log(data);
   const navigate = useNavigate();

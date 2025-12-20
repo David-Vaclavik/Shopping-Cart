@@ -18,10 +18,9 @@ function App() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  // Limit to 20 products for faster load during development, 0 is unlimited
-  const LIMIT = 0;
-
   useEffect(() => {
+    // Limit to 20 products for faster load during development, 0 is unlimited
+    const LIMIT = 0;
     const categories = ["laptops", "smartphones", "mobile-accessories", "tablets"];
 
     Promise.all(
@@ -42,12 +41,27 @@ function App() {
           .flatMap((r) => r.products)
           .sort((a, b) => a.title.localeCompare(b.title));
 
-        // console.log(`Loaded ${allProducts.length} products`);
+        // console.log(`Loaded ${allProducts.length} products`)
         // console.log(allProducts);
         setData({ products: allProducts });
+
+        // Prefetch first 12 images if on home page for faster loading on shop page
+        if (location.pathname === "/") {
+          allProducts.slice(0, 12).forEach((product) => {
+            const link = document.createElement("link");
+            link.rel = "prefetch";
+            link.as = "image";
+            link.href = product.images[0];
+            document.head.appendChild(link);
+          });
+        }
       })
       .catch((error) => {
         console.error("Failed to fetch products:", error);
+      })
+      .finally(() => {
+        // console.log(data);
+        console.log("Fetch attempt completed");
       });
   }, []);
 

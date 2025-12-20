@@ -25,7 +25,7 @@ function Shop() {
         {productsToDisplay &&
           productsToDisplay.map((product) => (
             <div className="card" key={product.id}>
-              <img src={product.images[0]} alt={product.title} />
+              <img src={product.images[0]} alt={product.title} loading="lazy" />
               <div className="card-text">
                 <h3>{product.title}</h3>
                 <p>Price: ${product.price}</p>
