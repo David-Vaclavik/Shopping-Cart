@@ -54,6 +54,12 @@ h1 {
   line-height: 1.1;
 }
 
+/* layout shifts because of no scrollbar */
+/* always show scrollbar - maybe find better solution later */
+html {
+  overflow-y: scroll;
+}
+
 /* TODO: update button styles */
 button {
   border-radius: 8px;
