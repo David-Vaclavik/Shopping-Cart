@@ -19,6 +19,7 @@ function App() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // Fetch products once on mount
   useEffect(() => {
     // Limit to 20 products for faster load during development, 0 is unlimited
     const LIMIT = 0;
@@ -45,17 +46,6 @@ function App() {
         // console.log(`Loaded ${allProducts.length} products`)
         // console.log(allProducts);
         setData({ products: allProducts });
-
-        // Prefetch first 12 images if on home page for faster loading on shop page
-        if (location.pathname === "/") {
-          allProducts.slice(0, 12).forEach((product) => {
-            const link = document.createElement("link");
-            link.rel = "prefetch";
-            link.as = "image";
-            link.href = product.images[0];
-            document.head.appendChild(link);
-          });
-        }
       })
       .catch((error) => {
         console.error("Failed to fetch products:", error);
@@ -65,6 +55,19 @@ function App() {
         console.log("Fetch attempt completed");
       });
   }, []);
+
+  // Prefetch images when on home page and data is loaded
+  useEffect(() => {
+    if (location.pathname === "/" && data?.products) {
+      data.products.slice(0, 12).forEach((product) => {
+        const link = document.createElement("link");
+        link.rel = "prefetch";
+        link.as = "image";
+        link.href = product.images[0];
+        document.head.appendChild(link);
+      });
+    }
+  }, [location.pathname, data]);
 
   /*
   useEffect(() => {
