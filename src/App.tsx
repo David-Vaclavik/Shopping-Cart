@@ -4,12 +4,13 @@ import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import type { Data, Product } from "./types";
+import type { Data } from "./types";
 
 function App() {
   const [data, setData] = useState<Data | null>(null);
+  // this controls the searchBar input value - lifted state from SearchBar used also in Shop
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchedProduct, setSearchedProduct] = useState<Product[] | null>(null);
+  // const [searchedProduct, setSearchedProduct] = useState<Product[] | null>(null);
   const [cart, setCart] = useState([]);
   const location = useLocation();
 
@@ -75,13 +76,13 @@ function App() {
   return (
     <>
       <Header
-        setSearchedProduct={setSearchedProduct}
+        // setSearchedProduct={setSearchedProduct}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         data={data}
       />
       <main>
-        <Outlet context={{ searchedProduct, data, cart, setCart }} />
+        <Outlet context={{ setSearchTerm, data, cart, setCart }} />
       </main>
       <Footer />
     </>

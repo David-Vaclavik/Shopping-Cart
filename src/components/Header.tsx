@@ -5,26 +5,31 @@ import logo36 from "../assets/logo36.svg";
 import { ShoppingCart, Store } from "lucide-react";
 import type { SearchBarProps } from "../types";
 
-function Header({ setSearchedProduct, searchTerm, setSearchTerm, data }: SearchBarProps) {
+function Header({ searchTerm, setSearchTerm, data }: SearchBarProps) {
   return (
     <header>
-      <Link to="/">
+      <Link
+        to="/"
+        onClick={() => {
+          setSearchTerm("");
+        }}
+      >
         <img className="logo" src={logo36} alt="Shop Logo" />
       </Link>
 
-      <SearchBar
-        setSearchedProduct={setSearchedProduct}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        data={data}
-      />
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} data={data} />
 
       <div className="controls">
         <Link to="/shop">
           {/* <Store color="#2b457d" size={36} /> */}
           <Store size={36} />
         </Link>
-        <Link to="/cart">
+        <Link
+          to="/cart"
+          onClick={() => {
+            setSearchTerm("");
+          }}
+        >
           {/* Cart Icon */}
           <ShoppingCart size={36} />
         </Link>

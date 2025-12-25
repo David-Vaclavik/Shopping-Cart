@@ -27,15 +27,17 @@ export type CartItem = {
 
 // Outled used in Shop,
 export type OutletContext = {
-  searchedProduct: Product[] | null;
   data: Data | null;
   cart: CartItem[];
   setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  // searchedProduct: Product[] | null;
+  // setSearchedProduct: React.Dispatch<React.SetStateAction<Product[] | null>>;
 };
 
 // in Header and SearchBar
 export type SearchBarProps = {
-  setSearchedProduct: React.Dispatch<React.SetStateAction<Product[] | null>>;
+  // setSearchedProduct: React.Dispatch<React.SetStateAction<Product[] | null>>;
   searchTerm: string;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   data: Data | null;

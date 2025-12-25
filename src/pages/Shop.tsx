@@ -1,29 +1,71 @@
-import { useOutletContext } from "react-router";
+import { useOutletContext, useSearchParams } from "react-router";
 import { CardControls } from "../components/CardControls";
 import "../styles/Shop.css";
 import type { OutletContext } from "../types";
+// import { useState } from "react";
 
 function Shop() {
-  const { searchedProduct, data, setCart } = useOutletContext<OutletContext>();
+  const { setSearchTerm, data, setCart } = useOutletContext<OutletContext>();
 
-  // Show searchedProduct if it exists, otherwise show all products from data
-  const productsToDisplay = searchedProduct || data?.products;
+  // const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  // TODO: Add filtering options for categories
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCategory = searchParams.get("category") || "all";
+  const searchQuery = searchParams.get("search") || "";
+
+  // Filter by search query
+  let productsToDisplay = data?.products;
+
+  if (searchQuery) {
+    productsToDisplay = productsToDisplay?.filter((product) =>
+      product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+
+  // Derive filtered products on each render
+  const displayProducts =
+    selectedCategory === "all"
+      ? productsToDisplay
+      : productsToDisplay?.filter((product) => product.category === selectedCategory);
+
+  const handleClick = (category: string) => {
+    // Clear search results when filtering by category
+    setSearchTerm("");
+
+    // Keep search query when filtering by category
+    const newParams: Record<string, string> = {};
+
+    if (category !== "all") {
+      newParams.category = category;
+    }
+
+    // console.log(newParams);
+    setSearchParams(newParams);
+  };
 
   return (
     <>
       <h1>Our Collection</h1>
-      <p className="main-description">
+      <p className="main-description-shop">
         Experience innovation with our collection of cutting-edge electronics crafted for modern
         living.
       </p>
 
-      {/* TODO: Add filtering options for categories */}
+      {/* const categories = ["laptops", "smartphones", "mobile-accessories", "tablets"] */}
+      <div className="category-select">
+        {/* <button onClick={() => console.log(data?.products)}>Data clg</button> */}
+        {/* <button onClick={() => console.log(searchQuery)}>Search Query</button> */}
+
+        <button onClick={() => handleClick("all")}>All</button>
+        <button onClick={() => handleClick("laptops")}>Laptops</button>
+        <button onClick={() => handleClick("smartphones")}>Smartphones</button>
+        <button onClick={() => handleClick("tablets")}>Tablets</button>
+        <button onClick={() => handleClick("mobile-accessories")}>Mobile Accessories</button>
+      </div>
 
       <div className="card-container">
-        {productsToDisplay &&
-          productsToDisplay.map((product) => (
+        {displayProducts &&
+          displayProducts.map((product) => (
             <div className="card" key={product.id}>
               <img src={product.images[0]} alt={product.title} loading="lazy" />
               <div className="card-text">

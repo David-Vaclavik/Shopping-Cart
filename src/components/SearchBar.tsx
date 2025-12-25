@@ -2,8 +2,8 @@
 import { useNavigate } from "react-router";
 import type { SearchBarProps } from "../types";
 
-function SearchBar({ setSearchedProduct, searchTerm, setSearchTerm, data }: SearchBarProps) {
-  //TODO: searchTerm state why is it lifted? investigate later.
+function SearchBar({ searchTerm, setSearchTerm, data }: SearchBarProps) {
+  //! searchTerm state why is it lifted? - because used in Shop for filtering
   // const [searchTerm, setSearchTerm] = useState("");
   // console.log(data);
   const navigate = useNavigate();
@@ -21,15 +21,12 @@ function SearchBar({ setSearchedProduct, searchTerm, setSearchTerm, data }: Sear
     e.preventDefault();
     console.log("Searching for:", searchTerm);
 
-    console.log(filteredProducts);
-    setSearchedProduct(filteredProducts);
-
-    // Clears input and state
-    // setSearchTerm(""); //? Should we clear the search term?
-
-    // Navigate to shop page
-    //TODO: if in shop page already, don't navigate again
-    navigate("/shop");
+    // Navigate with search query in URL
+    if (searchTerm.trim()) {
+      navigate(`/shop?search=${encodeURIComponent(searchTerm.trim())}`);
+    } else {
+      navigate("/shop");
+    }
   };
 
   return (
