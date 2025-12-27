@@ -2,20 +2,25 @@ import { useOutletContext, useSearchParams } from "react-router";
 import { CardControls } from "../components/CardControls";
 import "../styles/Shop.css";
 import type { OutletContext } from "../types";
-// import { useState } from "react";
+import { useEffect } from "react";
 
 function Shop() {
   const { setSearchTerm, data, setCart } = useOutletContext<OutletContext>();
 
-  // const [selectedCategory, setSelectedCategory] = useState<string>("all");
-
+  // Get URL search params - uses URLSearchParams API
   const [searchParams, setSearchParams] = useSearchParams();
+
   const selectedCategory = searchParams.get("category") || "all";
   const searchQuery = searchParams.get("search") || "";
 
-  // Filter by search query
+  // Sync searchTerm state with URL search param
+  useEffect(() => {
+    setSearchTerm(searchQuery);
+  }, [searchQuery, setSearchTerm]);
+
   let productsToDisplay = data?.products;
 
+  // Filter by search query
   if (searchQuery) {
     productsToDisplay = productsToDisplay?.filter((product) =>
       product.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -29,17 +34,16 @@ function Shop() {
       : productsToDisplay?.filter((product) => product.category === selectedCategory);
 
   const handleClick = (category: string) => {
-    // Clear search results when filtering by category
+    // Clear search input when filtering by category
     setSearchTerm("");
 
-    // Keep search query when filtering by category
     const newParams: Record<string, string> = {};
 
     if (category !== "all") {
       newParams.category = category;
     }
 
-    // console.log(newParams);
+    console.log(newParams);
     setSearchParams(newParams);
   };
 
