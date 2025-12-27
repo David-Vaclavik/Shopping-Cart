@@ -10,7 +10,6 @@ function App() {
   const [data, setData] = useState<Data | null>(null);
   // this controls the searchBar input value - lifted state from SearchBar used also in Shop
   const [searchTerm, setSearchTerm] = useState("");
-  // const [searchedProduct, setSearchedProduct] = useState<Product[] | null>(null);
   const [cart, setCart] = useState([]);
   const location = useLocation();
 
@@ -43,20 +42,17 @@ function App() {
           .flatMap((r) => r.products)
           .sort((a, b) => a.title.localeCompare(b.title));
 
-        // console.log(`Loaded ${allProducts.length} products`)
-        // console.log(allProducts);
         setData({ products: allProducts });
       })
       .catch((error) => {
         console.error("Failed to fetch products:", error);
       })
       .finally(() => {
-        // console.log(data);
         console.log("Fetch attempt completed");
       });
   }, []);
 
-  // Prefetch images when on home page and data is loaded
+  // Prefetch and cache images when on home page and data is loaded
   useEffect(() => {
     if (location.pathname === "/" && data?.products) {
       data.products.slice(0, 12).forEach((product) => {
@@ -69,21 +65,9 @@ function App() {
     }
   }, [location.pathname, data]);
 
-  /*
-  useEffect(() => {
-    // fetch(`https://dummyjson.com/products`)
-    // fetch(`https://dummyjson.com/products?limit=${LIMIT}&sortBy=title&order=asc`)
-      `https://dummyjson.com/products/category/smartphones?limit=${LIMIT}&sortBy=title&order=asc`
-  */
-
   return (
     <>
-      <Header
-        // setSearchedProduct={setSearchedProduct}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        data={data}
-      />
+      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} data={data} />
       <main>
         <Outlet context={{ setSearchTerm, data, cart, setCart }} />
       </main>
