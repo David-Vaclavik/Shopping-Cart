@@ -13,7 +13,7 @@ function Home() {
           <button>Shop Now</button>
         </Link>
       </div>
-      <img src={heroSketch} alt="Hero" />
+      <img src={heroSketch} alt="Hero" loading="eager" />
     </div>
   );
 }
