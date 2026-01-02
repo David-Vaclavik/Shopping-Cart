@@ -23,33 +23,44 @@ function App() {
     // Limit to 20 products for faster load during development, 0 is unlimited
     const LIMIT = 0;
     const categories = ["laptops", "smartphones", "mobile-accessories", "tablets"];
+    let ignore = false;
 
-    Promise.all(
-      categories.map((category) =>
-        fetch(
-          `https://dummyjson.com/products/category/${category}?limit=${LIMIT}&sortBy=title&order=asc`
-        ).then((res) => {
-          if (!res.ok) {
+    const fetchData = async () => {
+      try {
+        const categoryPromises = categories.map(async (category) => {
+          const response = await fetch(
+            `https://dummyjson.com/products/category/${category}?limit=${LIMIT}&sortBy=title&order=asc`
+          );
+
+          if (response.ok === false) {
             throw new Error(`Failed to fetch ${category}`);
           }
-          return res.json();
-        })
-      )
-    )
-      .then((results) => {
-        // console.log(results);
-        const allProducts = results
+
+          const data = await response.json();
+          return data;
+        });
+
+        const categoryResults = await Promise.all(categoryPromises);
+
+        if (ignore) return;
+
+        const allProducts = categoryResults
           .flatMap((r) => r.products)
           .sort((a, b) => a.title.localeCompare(b.title));
 
         setData({ products: allProducts });
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Failed to fetch products:", error);
-      })
-      .finally(() => {
+      } finally {
         console.log("Fetch attempt completed");
-      });
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   // Prefetch and cache images when on home page and data is loaded
